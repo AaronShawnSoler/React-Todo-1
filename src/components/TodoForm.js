@@ -16,6 +16,7 @@ export default class TodoForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
     this.props.add(this.state.form)
+    this.setState(state => ({form: ''}))
   }
 
   render() {
@@ -26,7 +27,7 @@ export default class TodoForm extends Component {
           <input type="text" value={this.state.form} onChange={this.handleChange}/>
         </label>
         <input type="submit" value="Add Todo"/>
-        <input type="button" value="Clear Completed"/>
+        <input type="button" value="Clear Completed" onClick={() => this.props.remove()}/>
       </form>
     )
   }

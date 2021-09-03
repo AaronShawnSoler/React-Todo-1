@@ -9,11 +9,11 @@ export default class TodoList extends Component {
   }
 
   render() {
-    const {todoItems} = this.props
+    const {todoItems, completeTask} = this.props
 
     return (
       <div>
-        {todoItems.map((item, index) => <Todo data={item} key={index}/>)}
+        {todoItems.map((item, index) => <Todo data={item} key={index} completeTask={completeTask}/>)}
       </div>
     )
   }

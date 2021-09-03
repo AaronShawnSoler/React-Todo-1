@@ -25,6 +25,7 @@ class App extends React.Component {
 
     this.addTodo = this.addTodo.bind(this)
     this.removeTodo = this.removeTodo.bind(this)
+    this.completeTask = this.completeTask.bind(this)
   }
 
   addTodo(taskName) {
@@ -45,7 +46,22 @@ class App extends React.Component {
   removeTodo() {
     this.setState(state => {
       return {
+        todo: state.todo.filter(todoItem => todoItem.completed == false)
+      }
+    })
+  }
 
+  completeTask(id) {
+    this.setState(state => {
+      return {
+        todo: state.todo.map(todoItem => {
+          if(todoItem.id == id) {
+            return {
+              ...todoItem,
+              completed: true
+            }
+          } else return todoItem
+        })
       }
     })
   }
@@ -55,7 +71,7 @@ class App extends React.Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoForm add={this.addTodo} remove={this.removeTodo}/>
-        <TodoList todoItems={this.state.todo}/>
+        <TodoList todoItems={this.state.todo} completeTask={this.completeTask}/>
       </div>
     );
   }
