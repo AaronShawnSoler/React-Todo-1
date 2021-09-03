@@ -22,29 +22,35 @@ class App extends React.Component {
         }
       ]
     }
+
+    this.addTodo = this.addTodo.bind(this)
+    this.removeTodo = this.removeTodo.bind(this)
   }
 
   addTodo(taskName) {
-    this.setState({
-      todo: [
-        ...this.state.todo,
-        {
-          task: taskName,
-          id: Date.now(),
-          completed: false
-        }
-      ]
+    this.setState(state => {
+      return {
+        todo: [
+          ...state.todo,
+          {
+            task: taskName,
+            id: Date.now(),
+            completed: false
+          }
+        ]
+      }
     })
   }
 
   removeTodo() {
-    this.setState({
-      todo: this.state.todo.filter(todo => todo.completed == false)
+    this.setState(state => {
+      return {
+
+      }
     })
   }
 
   render() {
-
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>

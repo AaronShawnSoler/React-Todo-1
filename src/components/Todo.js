@@ -8,9 +8,13 @@ export default class Todo extends Component {
   render() {
     const {data} = this.props
 
+    const completedTask = {
+      color: data.completed ? 'green' : 'red'
+    }
+
     return (
       <div>
-        <p>{data.task}</p>
+        <p style={completedTask}>{data.task}</p>
       </div>
     )
   }
